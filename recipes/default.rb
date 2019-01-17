@@ -90,6 +90,11 @@ bash 'boulder_setup' do
   creates "#{boulderdir}/setup.done"
 end
 
+bash 'listenbuddy' do
+  code 'source /etc/profile.d/golang.sh && GO15VENDOREXPERIMENT=1 go get github.com/jsha/listenbuddy'
+  action :run
+end
+
 bash 'run_boulder' do
   live_stream true
   cwd boulderdir
